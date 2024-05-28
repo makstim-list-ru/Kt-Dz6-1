@@ -7,7 +7,16 @@ import org.junit.Before
 
 class WallServiceTest {
 
-    val post1 = Post(id = 1, text = "this is post #1")
+    val audioExmpl1 = Audio (1,1,"artist1", "title1", 1)
+    val videoExmpl1 = Video (11,11,"video11", "this video11",11)
+
+    val audioAtt1 = AudioAttachment(audio = audioExmpl1)
+    val videoAtt1 = VideoAttachment(video = videoExmpl1)
+    val attachments = arrayOf<Attachment>(audioAtt1, videoAtt1)
+    val attachments2 = Array<Attachment> (2) {audioAtt1}
+    //val attachments3 = Array<Attachment> (2) {audioAtt1, videoAtt2}
+
+    val post1 = Post(id = 1, text = "this is post #1", attachments = attachments)
     val post2 = Post(id = 2, text = "this is post #2")
     val post2New = Post(id = 1, text = "this is post #2NEW")
     val post3 = Post(id = 3, text = "this is post #3")

@@ -11,23 +11,23 @@ data class Post(
     val replyPostId: Int = 0,
     val friendsOnly: Boolean = false,
     val comments: ObjComments = ObjComments(),
-    val copyright: ObjTBD = ObjTBD(),
-    val likes: ObjTBD = ObjTBD(),
-    val reposts: ObjTBD = ObjTBD(),
-    val views: ObjTBD = ObjTBD(),
+    val copyright: ObjTBD? = null,
+    val likes: ObjTBD? = null,
+    val reposts: ObjTBD? = null,
+    val views: ObjTBD? = null,
     val postType: String = "",
-    val postSource: ObjTBD = ObjTBD(),
-    val attachments: Array<String> = emptyArray<String>(),
-    val geo: ObjTBD = ObjTBD(),
+    val postSource: ObjTBD? = null,
+    val attachments: Array<Attachment>? = null,
+    val geo: ObjTBD? = null,
     val signerId: Int = 0,
-    val copyHistory: Array<String> = emptyArray<String>(),
+    val copyHistory: Array<String>? = null,
     val canPin: Boolean = false,
     val canDelete: Boolean = false,
     val canEdit: Boolean = false,
     val isPinned: Boolean = false,
     val markedAsAds: Boolean = false,
     val isFavorite: Boolean = false,
-    val donut: ObjTBD = ObjTBD(),
+    val donut: ObjTBD? = null,
     val postponedId: Int = 0
 )
 
@@ -42,3 +42,32 @@ data class ObjComments(
 data class ObjTBD(
     val string: String = ""
 )
+
+interface Attachment {
+    val type: String
+}
+
+class AudioAttachment(override val type: String = "audio", val audio: Audio? = null) : Attachment
+
+data class Audio(
+    val id: Int = 0,
+    val ownerId: Int = 0,
+    val artist: String? = null,
+    val title: String? = null,
+    val duration: Int = 0
+)
+
+class VideoAttachment(override val type: String = "video", val video: Video? = null) : Attachment
+
+data class Video(
+    val id: Int = 0,
+    val ownerId: Int = 0,
+    val title: String? = null,
+    val description: String? = null,
+    val duration: Int = 0
+)
+
+
+
+
+
