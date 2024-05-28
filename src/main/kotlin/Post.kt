@@ -67,6 +67,16 @@ data class Video(
     val duration: Int = 0
 )
 
+class FileAttachment(override val type: String = "file", val file: File? = null) : Attachment
+
+data class File(
+    val id: Int = 0,
+    val ownerId: Int = 0,
+    val title: String? = null,
+    val size: Int = 0,
+    val ext: String? = null
+)
+
 
 
 
