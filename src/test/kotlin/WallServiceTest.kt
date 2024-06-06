@@ -51,4 +51,25 @@ class WallServiceTest {
         assertEquals(WallService.update(post3), false)
         assertEquals(WallService.update(post2New), true)
     }
+
+    @Test
+    fun createComment() {
+        WallService.add(post1)
+        WallService.add(post2)
+        WallService.add(post3)
+
+        val testComment = Comment()
+        assertEquals(WallService.createComment(2, testComment), testComment)
+    }
+
+
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+        WallService.add(post1)
+        WallService.add(post2)
+
+        val testComment = Comment()
+        WallService.createComment(2, testComment)
+    }
+
 }

@@ -3,6 +3,8 @@ package ru.netology
 object WallService {
     private var posts = emptyArray<Post>()
     private var id = 0
+    private var comments = emptyArray<Comment>()
+
 
     fun add(post: Post): Post {
         posts += post.copy(id = id)
@@ -18,6 +20,16 @@ object WallService {
             }
         }
         return false
+    }
+
+    fun createComment(postId: Int, comment: Comment): Comment {
+        for ((index, postTry) in posts.withIndex()) {
+            if (postTry.id == postId) {
+                comments += comment
+                return comments.last()
+            }
+        }
+        throw PostNotFoundException("PostNotFoundException with ID=$postId")
     }
 
     fun clear() {
