@@ -30,6 +30,72 @@ class WallServiceTest {
     }
 
     @Test
+    fun chkCommentsToNotes() {
+        val comm1 = WallService.notesCreateComment("aaa", "it's comments-to-note #1")
+        val comm2 = WallService.notesCreateComment("bbb", "it's comments-to-note #2")
+        val comm3 = WallService.notesCreateComment("ccc", "it's comments-to-note #3")
+        assertEquals(6, comm3+comm2+comm1)
+
+        WallService.notesGetComments().forEach {
+            println(it)
+        }
+        println()
+
+        assertEquals(WallService.notesEditComment(2, "new-message-in-comment"),1)
+
+        WallService.notesGetComments().forEach {
+            println(it)
+        }
+        println()
+
+        assertEquals(WallService.notesDeleteComment(3),1)
+
+        WallService.notesGetComments().forEach {
+            println(it)
+        }
+        println()
+
+        assertEquals(WallService.notesRestoreComment(-3),1)
+
+        WallService.notesGetComments().forEach {
+            println(it)
+        }
+        println()
+    }
+
+
+    @Test
+    fun chkNote() {
+        val Note1 = WallService.notesAdd("title_note1", "text_note1")
+        val Note2 = WallService.notesAdd("title_note2", "text_note2")
+        val Note3 = WallService.notesAdd("title_note3", "text_note3")
+        val Note4 = WallService.notesAdd("title_note4", "text_note4")
+        assertEquals(10,Note1+Note2+Note3+Note4)
+
+        WallService.notesGet().forEach {
+            println(it)
+        }
+        println()
+
+        assertEquals(1,WallService.notesEdit("2", "title_note1edited", "text_note1edited"))
+
+        WallService.notesGet().forEach {
+            println(it)
+        }
+        println()
+
+        assertEquals(1,WallService.notesDelete("3"))
+
+        WallService.notesGet().forEach {
+            println(it)
+        }
+        println()
+
+
+    }
+
+
+    @Test
     fun add() {
         var tmpPost = WallService.add(post1)
         assertEquals(tmpPost.id, 0)
