@@ -38,13 +38,14 @@ object WallService {
     ): Int {
         commentsToNote.forEach {
             if (it.commentId == commentId) {
-                val commentTmp = it.copy(commentId = -it.commentId)
+                val commentTmp = it.copy(active = false)
                 commentsToNote.remove(it)
                 commentsToNote.add(commentTmp)
                 return 1
             }
         }
-        return 180 //Результат После успешного выполнения возвращает 1. Коды ошибок 180 Note not found
+        throw RuntimeException("notesDeleteComment ошибка исполнения, код 180")
+//        return 180 //Результат После успешного выполнения возвращает 1. Коды ошибок 180 Note not found
     }
 
     fun notesEditComment(
@@ -63,7 +64,8 @@ object WallService {
                 return 1
             }
         }
-        return 183 //Результат После успешного выполнения возвращает 1. Коды ошибок 183 Access to comment denied
+        throw RuntimeException("notesEditComment ошибка исполнения, код 183")
+//        return 183 //Результат После успешного выполнения возвращает 1. Коды ошибок 183 Access to comment denied
     }
 
     fun notesGetComments(
@@ -85,13 +87,14 @@ object WallService {
     ): Int {
         commentsToNote.forEach {
             if (it.commentId == commentId) {
-                val commentTmp = it.copy(commentId = -it.commentId)
+                val commentTmp = it.copy(active = true)
                 commentsToNote.remove(it)
                 commentsToNote.add(commentTmp)
                 return 1
             }
         }
-        return 183 //Результат После успешного выполнения возвращает 1. Коды ошибок 183 Access to comment denied
+        throw RuntimeException("notesRestoreComment ошибка исполнения, код 183")
+//        return 183 //Результат После успешного выполнения возвращает 1. Коды ошибок 183 Access to comment denied
     }
 
 //
@@ -133,7 +136,8 @@ object WallService {
                 return 1
             }
         }
-        return 180 //Результат После успешного выполнения возвращает 1. Коды ошибок 180 Note not found
+        throw RuntimeException("notesDelete ошибка исполнения, код 180")
+//        return 180 //Результат После успешного выполнения возвращает 1. Коды ошибок 180 Note not found
     }
 
 
@@ -162,7 +166,8 @@ object WallService {
                 return 1
             }
         }
-        return 180 //Результат После успешного выполнения возвращает 1. Коды ошибок 180 Note not found
+        throw RuntimeException("notesEdit ошибка исполнения, код 180")
+//        return 180 //Результат После успешного выполнения возвращает 1. Коды ошибок 180 Note not found
     }
 
     fun notesGet(): MutableList<Note> {

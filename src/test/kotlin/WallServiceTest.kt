@@ -55,12 +55,30 @@ class WallServiceTest {
         }
         println()
 
-        assertEquals(WallService.notesRestoreComment(-3),1)
+        assertEquals(WallService.notesRestoreComment(3),1)
 
         WallService.notesGetComments().forEach {
             println(it)
         }
         println()
+    }
+
+    @Test(expected = RuntimeException::class)
+//    @Test
+    fun  exceptionsCheck_notesRestoreComment (){
+        WallService.notesRestoreComment(5)
+    }
+
+    @Test(expected = RuntimeException::class)
+//    @Test
+    fun  exceptionsCheck_notesDeleteComment (){
+        WallService.notesDeleteComment(5)
+    }
+
+    @Test(expected = RuntimeException::class)
+//    @Test
+    fun  exceptionsCheck_notesEditComment (){
+        WallService.notesEditComment(5, "test message dummy")
     }
 
 

@@ -1,6 +1,7 @@
 package ru.netology
 
 data class CommentToNote(
+    val active: Boolean = true,
     val commentId: Int = 0, //  Идентификатор комментария. Обязательный параметр
     val noteId: String = "", //Идентификатор заметки. Обязательный параметр
     val ownerId: Int = 0, //Идентификатор владельца заметки.

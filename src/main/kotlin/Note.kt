@@ -9,18 +9,3 @@ data class Note(
     val privacyView: String = "", //Настройки приватности просмотра заметки в специальном формате.
     val privacyComment: String = "", //Настройки приватности комментирования заметки в специальном формате.
 )
-
-
-//data class Note(
-//    val id: Int = -1,           //integer Идентификатор заметки
-//    val ownerId: Int = -1,      //integer Идентификатор владельца заметки
-//    val title: String = "",     //string Заголовок заметки
-//    val text: String = "",      //string Текст заметки
-//    val date: Int = -1,         //integer Дата создания заметки в формате Unixtime
-//    val comments: Int = -1,     //integer Количество комментариев
-//    val readComments: Int = -1, //integer Количество прочитанных комментариев (только при запросе информации о заметке текущего пользователя).
-//    val viewUrl: String = "",   //string URL страницы для отображения заметки.
-//    val privacyView: String = "",   //string Настройки приватности комментирования заметки
-//    val canComment: Int = -1,   //integer Есть ли возможность оставлять комментарии
-//    val textWiki: String = "",   //string Тэги ссылок на wiki
-//)
